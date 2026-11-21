@@ -1,4 +1,5 @@
 import { Nav } from "@/components/sections/Nav";
+import { Hero } from "@/components/sections/Hero";
 import { SectionStub } from "@/components/ui/SectionStub";
 
 export default function Home() {
@@ -6,7 +7,7 @@ export default function Home() {
     <>
       <Nav />
       <main id="top">
-        <SectionStub n={2} name="Hero" mode="light" />
+        <Hero />
         <SectionStub n={3} name="The problem" mode="dark" />
         <SectionStub n={4} name="What happens instead" mode="light" />
         <SectionStub id="services" n={5} name="The 7 services" mode="lavender" />

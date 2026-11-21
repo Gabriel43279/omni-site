@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes, ReactNode } from "react";
 
-type Variant = "primary" | "ghost";
+type Variant = "primary" | "outline" | "ghost";
 type Size = "md" | "lg";
 
 const base =
@@ -9,8 +9,9 @@ const base =
   "focus-visible:outline-2 focus-visible:outline-offset-3";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-ink text-paper hover:bg-ink/85 focus-visible:outline-ink",
-  ghost: "text-ink hover:bg-ink/6 focus-visible:outline-ink",
+  primary: "bg-ink text-paper hover:bg-ink/85 active:bg-ink/75 focus-visible:outline-ink",
+  outline: "text-ink ring-1 ring-ink/20 ring-inset hover:bg-ink/6 active:bg-ink/10 focus-visible:outline-ink",
+  ghost: "text-ink hover:bg-ink/6 active:bg-ink/10 focus-visible:outline-ink",
 };
 
 const sizes: Record<Size, string> = {

@@ -18,7 +18,7 @@ the moment a call is answered. Story: "Lights on".
 --amber:    #F5B021   /* ONLY lit windows and the moment a call is answered */
 ```
 
-- Font: General Sans or Satoshi (Fontshare), self-hosted. Headlines semibold, tight tracking,
+- Font: Satoshi (Fontshare), self-hosted, one font site-wide. Headlines semibold, tight tracking,
   72–140px desktop. Body 17–18px / 1.5. Tabular figures for numbers.
 - Radius: 28px cards, fully rounded pills and buttons.
 - Section spacing ≥ 160px desktop. Content max-width 1200px; giant headlines may break out.

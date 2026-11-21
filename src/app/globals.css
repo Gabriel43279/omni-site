@@ -38,13 +38,15 @@
 
   /* Elevation for floating UI (nav pill). Ink-tinted, soft. */
   --shadow-pill: 0 1px 2px rgb(17 17 17 / 0.06), 0 12px 32px -16px rgb(17 17 17 / 0.28);
+  --shadow-card: 0 1px 2px rgb(17 17 17 / 0.06);
+  --shadow-phone: 0 2px 4px rgb(17 17 17 / 0.08), 0 40px 80px -32px rgb(17 17 17 / 0.45);
 
   /* One easing everywhere (CLAUDE.md §5.3) — matches GSAP power3.out */
   --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme inline {
-  --font-sans: var(--font-general-sans);
+  --font-sans: var(--font-satoshi);
 }
 
 /* ------------------------------------------------------------------ */
@@ -90,6 +92,14 @@
   /* Numbers: tabular figures (CLAUDE.md §4). */
   .tabular {
     font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Elements GSAP reveals on load start hidden — but only when JS is running and motion is allowed,
+   so the page never stays blank without JS and never flashes before hydration. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-load-reveal] {
+    opacity: 0;
   }
 }
 

@@ -58,7 +58,7 @@ Headline: **"Every call answered. Every job booked."**
 --amber:    #F5B021   /* ONLY lit windows and the moment a call is answered */
 ```
 
-- Font: General Sans or Satoshi (Fontshare), self-hosted. Headlines semibold, tight tracking,
+- Font: Satoshi (Fontshare), self-hosted, one font site-wide. Headlines semibold, tight tracking,
   72–140px desktop. Body 17–18px / 1.5. Tabular figures for numbers.
 - Radius: 28px cards, fully rounded pills and buttons.
 - Section spacing ≥ 160px desktop. Content max-width 1200px; giant headlines may break out.
@@ -133,7 +133,9 @@ Headline: **"Every call answered. Every job booked."**
 4. **Colour roles:** lime is for "booked" tags and success states. Amber is ONLY for lit windows
    and the moment a call is answered.
 5. **Rule 5.2 exception:** hero job pins popping in on page load are an allowed third exception.
-6. **Fonts:** fetch General Sans from Fontshare when building, and self-host it via `next/font/local`.
+6. **Fonts:** Satoshi only (General Sans has no tabular figures). Fetched from Fontshare by
+   `scripts/fetch-fonts.mjs` and self-hosted via `next/font/local`; the font file is never committed
+   (the licence forbids redistribution through a public repo).
 7. **Git:** always commit and push to `main`.
 8. **Images:** until the clay 3D renders exist, use placeholder boxes in the right shape and size
    wherever an image goes.
