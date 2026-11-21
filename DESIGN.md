@@ -4,7 +4,8 @@ This design system is final. Any design skill (including Hallmark) must use it a
 choose a different theme, palette, font or layout style. Full rules: CLAUDE.md.
 
 Look: calm, premium, matte white clay 3D (Eddie / Eventbeds style), strong dark/light contrast,
-lavender and lime accents, amber only for "answered/booked" moments. Story: "Lights on".
+lavender and lime accents (lime for "booked" tags and success), amber only for lit windows and
+the moment a call is answered. Story: "Lights on".
 
 ## Tokens
 
@@ -13,8 +14,8 @@ lavender and lime accents, amber only for "answered/booked" moments. Story: "Lig
 --ink:      #111111   /* dark backgrounds, text on light */
 --lavender: #D9D3FF   /* services bg, chips */
 --violet:   #8B7FFF   /* accents */
---lime:     #CFE36A   /* "booked" tags, success */
---amber:    #F5B021   /* ONLY lit windows and "answered/booked" moments */
+--lime:     #CFE36A   /* "booked" tags, success states */
+--amber:    #F5B021   /* ONLY lit windows and the moment a call is answered */
 ```
 
 - Font: General Sans or Satoshi (Fontshare), self-hosted. Headlines semibold, tight tracking,

@@ -36,15 +36,16 @@ Headline: **"Every call answered. Every job booked."**
 | 1 | Nav | Frosted glass | Pill bar shrinks slightly on scroll |
 | 2 | Hero | Light | Clay town image; HTML job pins pop in; phone centre stage |
 | 3 | The problem | Dark | Pinned frame sequence: building windows light up; service cards slide out |
-| 4 | What happens instead | Light | Phone from hero arrives and pins; messages type out on scroll |
+| 4 | What happens instead | Light | New phone (identical to the hero phone) pins; messages type out on scroll |
 | 5 | The 7 services | Lavender | Sticky canvas morph: phone → bubble → house → van → star |
 | 6 | How it connects | Dark | 7 glass chips load, lines draw into pulsing "+ Your Business" pill |
 | 7 | Websites we build | Dark | Columns of site screenshots drifting at different speeds |
 | 8 | Results | Light | Giant "BOOKED"; pills float in front of and behind it; stats count up |
-| 9 | ROI calculator | Light | Live number from sliders (missed calls/week × avg job value) |
+| 9 | ROI calculator | Light | Live number from sliders (missed calls/week × avg job value × % you'd win) |
 | 10 | Who it's for | Light | None (rest beat) — simple fades only |
 | 11 | Pricing + FAQ | Light | Price card lift; accordions |
 | 12 | Final CTA | Dark → lit | Building returns; all windows light at once |
+| — | Footer | Dark | None — plain, no animation |
 
 ## 4. Design tokens
 
@@ -53,8 +54,8 @@ Headline: **"Every call answered. Every job booked."**
 --ink:      #111111   /* dark backgrounds, text on light */
 --lavender: #D9D3FF   /* services bg, chips */
 --violet:   #8B7FFF   /* accents */
---lime:     #CFE36A   /* "booked" tags, success */
---amber:    #F5B021   /* ONLY lit windows and "answered/booked" moments */
+--lime:     #CFE36A   /* "booked" tags, success states */
+--amber:    #F5B021   /* ONLY lit windows and the moment a call is answered */
 ```
 
 - Font: General Sans or Satoshi (Fontshare), self-hosted. Headlines semibold, tight tracking,
@@ -73,7 +74,8 @@ Headline: **"Every call answered. Every job booked."**
    `<video>` by currentTime.
 6. Mobile (< 768px): no pinned section longer than ~1 viewport; simplify or use stills.
 7. `prefers-reduced-motion`: show final states / still images, no scrubbing.
-8. Animate only transform and opacity. Target 60fps. Use `gsap.matchMedia()` and `useGSAP`
+8. Animate only transform and opacity (allowed exceptions: DrawSVG stroke drawing, accordion
+   height, canvas redraws for frame sequences/morphs). Target 60fps. Use `gsap.matchMedia()` and `useGSAP`
    with proper cleanup.
 
 ## 6. Never do this (anti-slop rules)
@@ -135,3 +137,21 @@ Headline: **"Every call answered. Every job booked."**
 7. **Git:** always commit and push to `main`.
 8. **Images:** until the clay 3D renders exist, use placeholder boxes in the right shape and size
    wherever an image goes.
+9. **ROI calculator:** three sliders: missed calls/week, average job value, and "% of those you'd
+   win" (default 30%). Label the % clearly as an adjustable estimate, not a claim.
+10. **Footer:** plain, no animation. Company details as `[REAL]` placeholders, phone number
+    `[REAL: phone number]`, privacy policy link and a cookie notice.
+11. **"Book a call"** opens a calendar booking page (Cal.com or Calendly): `[REAL: booking link]`.
+12. **Sections 7 and 8** are built with placeholders. Before launch: real material, or hide them.
+13. **3D asset spec** (for the 3D maker):
+
+    | Asset | Spec |
+    |---|---|
+    | Hero clay town | 2880×1620 WebP still, clear area in the centre for the phone |
+    | Problem building | ~100 frames 1920×1080 + ~40 portrait frames 1080×1350 (mobile); same camera; windows light one by one |
+    | Services morph | phone → bubble → house → van → star, ~150 frames 1600×1600, lavender or transparent bg |
+    | Final CTA building | 2 stills, same angle: all windows dark / all lit |
+    | Website screenshots | 9–12 images, 1600×1200 |
+
+    Services morph mapping: phone = voice assistant + missed-call text back; bubble = chat widget +
+    omni-channel messaging; house = website; van = CTR/search visibility; star = reviews.
