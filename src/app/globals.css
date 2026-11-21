@@ -1,0 +1,103 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+/* ------------------------------------------------------------------
+   Design tokens — LOCKED (CLAUDE.md §4, DESIGN.md). Do not add colours.
+   @theme creates both the CSS variables and the Tailwind utilities.
+   ------------------------------------------------------------------ */
+@theme {
+  --color-*: initial; /* only our palette exists */
+  --color-paper: #f5f3ef; /* light backgrounds */
+  --color-ink: #111111; /* dark backgrounds, text on light */
+  --color-lavender: #d9d3ff; /* services bg, chips */
+  --color-violet: #8b7fff; /* accents */
+  --color-lime: #cfe36a; /* "booked" tags, success states */
+  --color-amber: #f5b021; /* ONLY lit windows + the moment a call is answered */
+  --color-white: #ffffff;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --radius-card: 28px;
+  --radius-pill: 9999px;
+
+  --spacing-section: 160px; /* min vertical spacing between sections (desktop) */
+  --spacing-gutter: 24px;
+  --container-content: 1200px;
+
+  /* Type scale: headlines 72–140px desktop, body 17–18px / 1.5 */
+  --text-display: clamp(3.25rem, 8vw, 8.75rem);
+  --text-display--line-height: 0.92;
+  --text-display--letter-spacing: -0.045em;
+  --text-h2: clamp(2.5rem, 5.5vw, 4.5rem);
+  --text-h2--line-height: 1;
+  --text-h2--letter-spacing: -0.035em;
+  --text-body: 1.125rem;
+  --text-body--line-height: 1.5;
+  --text-small: 0.9375rem;
+  --text-small--line-height: 1.4;
+
+  /* Elevation for floating UI (nav pill). Ink-tinted, soft. */
+  --shadow-pill: 0 1px 2px rgb(17 17 17 / 0.06), 0 12px 32px -16px rgb(17 17 17 / 0.28);
+
+  /* One easing everywhere (CLAUDE.md §5.3) — matches GSAP power3.out */
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme inline {
+  --font-sans: var(--font-general-sans);
+}
+
+/* ------------------------------------------------------------------ */
+
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    font-weight: 450;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--color-lavender);
+    color: var(--color-ink);
+  }
+}
+
+@layer utilities {
+  /* Numbers: tabular figures (CLAUDE.md §4). */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
