@@ -27,12 +27,27 @@ Be harsh. "Fine" is a failure. Never praise; only score and fix.
    | Anti-slop | Nothing from the "Never do this" list; nothing that looks like an AI template |
    | Copy | Direct, specific, trade language; no agency filler; [REAL] used instead of invented facts |
 
-4. **Fix every criterion that scored below 8.** Re-screenshot and re-score.
-   Repeat up to 3 rounds.
+3b. **Hallmark slop test — AUDIT MODE ONLY.** Use the hallmark skill's `audit` path
+   (`.claude/skills/hallmark/references/redesign.md`, "audit stops here"), never its build or
+   redesign mode. DESIGN.md is the locked design: Hallmark must not deal a theme, propose a new
+   palette, font or layout, or write to DESIGN.md (including its "Exports" refresh).
+   - With the dev server running, run from the repo root:
+     `node .claude/skills/hallmark/scripts/sloplint.mjs <this section's component files> --genre modern-minimal --render --url http://localhost:3000/`
+   - Walk the judged gates (`gates.md` § 1, § 4, § 5) against this section's screenshots only.
+   - List every `FAIL`, `REFLEX` and `WARN` that applies to this section, with `file:line`.
+   - **Any failed slop check counts as a score below 8** and must be fixed in step 4.
+   - Exception: if a check contradicts a rule written in CLAUDE.md or DESIGN.md (for example the
+     giant capitalised "BOOKED", the frosted nav pill, the phone mockup), CLAUDE.md/DESIGN.md wins.
+     Report it as "overridden by CLAUDE.md § X" with the reason; don't silently skip it.
+   - Hallmark's output folder `.hallmark/` is never committed.
+
+4. **Fix every criterion that scored below 8 and every failed slop check.** Re-screenshot, re-score
+   and re-run the slop test. Repeat up to 3 rounds.
 5. **Check accessibility:** with prefers-reduced-motion on, the section still reads perfectly;
    buttons and links work by keyboard; images have alt text.
 6. **Report** to the user:
    - the before/after score table
+   - the slop test results (before/after), including any checks overridden by CLAUDE.md/DESIGN.md
    - before and after screenshots (desktop and mobile)
    - anything still below 8 and why
    - every [REAL] placeholder in the section that the user must fill in

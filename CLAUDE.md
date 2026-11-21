@@ -132,3 +132,6 @@ Headline: **"Every call answered. Every job booked."**
    and the moment a call is answered.
 5. **Rule 5.2 exception:** hero job pins popping in on page load are an allowed third exception.
 6. **Fonts:** fetch General Sans from Fontshare when building, and self-host it via `next/font/local`.
+7. **Git:** always commit and push to `main`.
+8. **Images:** until the clay 3D renders exist, use placeholder boxes in the right shape and size
+   wherever an image goes.
